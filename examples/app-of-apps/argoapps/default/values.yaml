@@ -1,0 +1,8 @@
+namespace: default
+spec:
+  destination:
+    servicer: 'https://kubernetes.default.svc'
+  source:
+    repoURL: git@github.com:emil-vahlstrom/argo-demo.git
+    targetRevision: master
+    path: examples/app-of-apps/argoapps/default

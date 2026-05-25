@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-app
+  namespace: default
+spec:
+  destination:
+    namespace: default
+    server: 'https://kubernetes.default.svc'
+  project: default
+  syncPolicy: {}
+  source:
+    path: examples/apps-of-apps/argoapps/default
+    repoUrl: git@github.com:emil-vahlstrom/argo-demo.git
+    targetRevision: master

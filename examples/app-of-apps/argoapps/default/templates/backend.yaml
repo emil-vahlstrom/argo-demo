@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: backend
+  namespace: {{ .Release.Namespace }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: {{ .Release.Namespace }}
+    server: {{ .Values.spec.destination.server }}
+  project: {{ .Release.Namespace }}
+  source:
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: {{ .Values.spec.source.targetRevision }}
+    path: charts/backend
+    helm:
+      releaseName: backend
+      values: |
+        replicaCount: 1
+        title: "GitOps Demo Frontend"
+        backendService: "backend-service"
+        service:
+          port: 80
+          targetPort: 80
+        image:
+          repository: nginx
+          tag: latest
