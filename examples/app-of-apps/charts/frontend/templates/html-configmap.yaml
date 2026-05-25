@@ -7,7 +7,7 @@ data:
     <!DOCTYPE html>
     <html>
     <head>
-      <title>GitOps Demo</title>
+      <title>{{ .Values.title }}</title>
     </head>
     <body>
       <h1>Frontend App</h1>

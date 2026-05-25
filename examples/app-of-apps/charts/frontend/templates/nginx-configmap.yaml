@@ -16,7 +16,7 @@ data:
         }
 
         location /api/ {
-          proxy_pass http://backend-service/;
+          proxy_pass http://{{ .Values.backendService }}/;
         }
       }
     }
