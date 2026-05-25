@@ -11,5 +11,5 @@ spec:
   syncPolicy: {}
   source:
     path: examples/apps-of-apps/argoapps/default
-    repoUrl: git@github.com:emil-vahlstrom/argo-demo.git
+    repoURL: git@github.com:emil-vahlstrom/argo-demo.git
     targetRevision: master
