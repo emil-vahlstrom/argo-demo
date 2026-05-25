@@ -5,6 +5,6 @@ metadata:
 data:
   data.json: |
     {
-      "message": "Hello from backend",
-      "version": "v1"
+      "message": "{{ .Values.message }}",
+      "version": "{{ .Values.apiVersion }}"
     }

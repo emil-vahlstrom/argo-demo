@@ -1,0 +1,12 @@
+replicaCount: 1
+
+title: "GitOps Demo Frontend"
+
+backendService: "backend-service"
+
+service:
+  port: 80
+
+image:
+  repository: nginx
+  tag: latest
