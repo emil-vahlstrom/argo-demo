@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-html
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>GitOps Demo</title>
+    </head>
+    <body>
+      <h1>Frontend App</h1>
+
+      <button onclick="loadData()">
+        Call Backend
+      </button>
+
+      <pre id="output"></pre>
+
+      <script>
+        async function loadData() {
+          const response = await fetch('/api/data.json');
+          const data = await response.json();
+
+          document.getElementById('output').innerText =
+            JSON.stringify(data, null, 2);
+        }
+      </script>
+    </body>
+    </html>

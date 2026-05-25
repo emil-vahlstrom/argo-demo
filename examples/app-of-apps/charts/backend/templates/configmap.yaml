@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-json
+data:
+  data.json: |
+    {
+      "message": "Hello from backend",
+      "version": "v1"
+    }

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        volumeMounts:
+        - name: json-volume
+          mountPath: /usr/share/nginx/html/data.json
+          subPath: data.json
+      volumes:
+      - name: json-volume
+        configMap:
+          name: backend-json
