@@ -2,18 +2,18 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: backend
-  namespace: {{ .Release.Namespace }}
+  namespace: {{ .Values.namespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: {{ .Release.Namespace }}
+    namespace: {{ .Values.namespace }}
     server: {{ .Values.spec.destination.server }}
-  project: {{ .Release.Namespace }}
+  project: {{ .Values.namespace }}
   source:
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
-    path: charts/backend
+    path: examples/app-of-apps/charts/backend
     helm:
       releaseName: backend
       values: |
