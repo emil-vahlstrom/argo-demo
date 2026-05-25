@@ -6,5 +6,5 @@ spec:
   selector:
     app: backend
   ports:
-  - port: {{ .Values.port }}
-    targetPort: {{ .Values.targetPort }}
+  - port: {{ .Values.service.port }}
+    targetPort: {{ .Values.service.targetPort }}
