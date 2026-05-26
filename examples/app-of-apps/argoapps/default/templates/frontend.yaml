@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: frontend
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    app.kubernetes.io/part-of: root-app
+  namespace: argocd
+spec:
+  destination:
+    namespace: {{ .Values.namespace }}
+    server: {{ .Values.spec.destination.server }}
+  project: {{ .Values.namespace }}
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+      enabled: true
+  source:
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: {{ .Values.spec.source.targetRevision }}
+    path: examples/app-of-apps/charts/frontend
+    helm:
+      releaseName: backend
+      values: |
+        replicaCount: 1
+        title: "GitOps Demo Frontend"
+        backendService: "backend-service"
+        service:
+          port: 80
+          targetPort: 80
+        image:
+          repository: nginx
+          tag: latest
