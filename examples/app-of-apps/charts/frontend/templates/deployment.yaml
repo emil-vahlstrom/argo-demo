@@ -11,6 +11,9 @@ spec:
     metadata:
       labels:
         app: frontend
+      annotations:
+        checksum/html-config: {{ include (print $.Template.BasePath "/html-configmap.yaml") . | sha256sum }}
+        checksum/nginx-config: {{ include (print $.Template.BasePath "/nginx-configmap.yaml") . | sha256sum }}
     spec:
       containers:
       - name: nginx
