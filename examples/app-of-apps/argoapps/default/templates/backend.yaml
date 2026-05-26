@@ -6,6 +6,7 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
   labels:
     app.kubernetes.io/part-of: root-app
+  namespace: argocd
 spec:
   destination:
     namespace: {{ .Values.namespace }}
