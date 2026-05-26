@@ -26,7 +26,7 @@ spec:
       values: |
         replicaCount: 1
         message: "Hello from backend"
-        apiVersion: "v2"
+        apiVersion: "v3"
         service:
           port: 80
           targetPort: 80
