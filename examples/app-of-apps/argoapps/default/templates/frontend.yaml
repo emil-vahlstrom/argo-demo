@@ -14,8 +14,8 @@ spec:
   project: {{ .Values.namespace }}
   syncPolicy:
     automated:
-      prune: false
-      selfHeal: false
+      prune: true
+      selfHeal: true
       enabled: true
   source:
     repoURL: {{ .Values.spec.source.repoURL }}
