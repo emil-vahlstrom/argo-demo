@@ -4,6 +4,8 @@ metadata:
   name: backend
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+  labels:
+    app.kubernetes.io/part-of: root-app
 spec:
   destination:
     namespace: {{ .Values.namespace }}
